@@ -1,59 +1,70 @@
-# AngularBootstrap
+# Vibular
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.7.
+> An Angular starter with strong opinions, softer pastels, and absolutely no regrets.
+> Built between coffees, shipped on vibes.
 
-## Development server
+**Vibular** = **Vibe** + **Angular**. It's the feeling you get when the CLI scaffolds a project faster than you can question whether you needed it. This entire app — toolbar, themes, PWA plumbing, and even the page that documents the prompts that built it — was assembled by talking to [Claude Code](https://claude.com/claude-code) in plain English.
 
-To start a local development server, run:
+The full prompt-by-prompt timeline lives inside the app at `/prompts`. It's gloriously self-referential.
 
-```bash
-ng serve
-```
+## What's in the box
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- **Angular 21** with standalone components, signals, and lazy-loaded routes.
+- **Angular Material 21** on Material Design 3 — theming via the `mat.theme()` mixin, density tokens, and CSS custom properties.
+- **Three pastel themes** — Azure Sky, Rose Petal, Mint Breeze — swappable from the toolbar and remembered in `localStorage`.
+- **Split typography** — Montserrat for headlines, Lato for body text, wired through M3's `brand-family` / `plain-family` maps.
+- **A components gallery** — 26 live Material demos, each with a copy button and syntax-highlighted source (highlight.js + github-dark).
+- **A prompts page** — every prompt used to build this site, tagged and timestamped by step.
+- **Progressive Web App** — manifest, service worker, 8 maskable icon sizes, and a rocket logo that survives the home-screen trip.
+- **OnPush everywhere**, `takeUntilDestroyed()` for subscriptions, lazy routes — initial bundle sits at ~14 kB.
 
-## Code scaffolding
+## Vibe coding, explained
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+This project is an experiment in **vibe coding** — describing what you want in prose, letting the AI write the code, and keeping only what feels right. Every feature in `src/` traces back to a single prompt you can read on the `/prompts` page. No design docs, no tickets, no JIRA. Just vibes and a git log.
 
-```bash
-ng generate component component-name
-```
+It turns out vibes compile.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+## Getting started
 
 ```bash
-ng build
+npm install
+npm start          # ng serve on http://localhost:4200
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Other things you might want:
 
 ```bash
-ng test
+npm run build      # production build into dist/
+npm test           # Vitest, because Karma is a former life
+node scripts/generate-icons.mjs  # regenerate PWA icons from the rocket SVG
 ```
 
-## Running end-to-end tests
+## Project layout
 
-For end-to-end (e2e) testing, run:
+```
+src/
+├── app/
+│   ├── app.ts, app.html, app.scss    # shell: toolbar, theme picker, footer
+│   ├── app.routes.ts                  # every route is lazy-loaded
+│   ├── pages/
+│   │   ├── home/                      # hero + feature cards
+│   │   ├── about/                     # how it was built + "Why Vibular?"
+│   │   ├── components/                # the big Material gallery
+│   │   └── prompts/                   # the receipts
+│   └── shared/demo-block/             # reusable demo wrapper with copy + show-code
+├── styles.scss                        # mat.theme() calls for each pastel theme
+└── index.html                         # fonts, PWA meta, manifest link
 
-```bash
-ng e2e
+public/
+├── manifest.webmanifest               # standalone, maskable, theme-coloured
+├── favicon.png                        # rocket, not the Angular A
+└── icons/                             # 8 sizes, all generated from one SVG
+
+scripts/
+└── generate-icons.mjs                 # sharp pipeline: SVG → every PNG you need
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Credits
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Vibe coded with love by **Nagaraj** & **Claude**.
+The Angular team wrote the hard parts. We just described what we wanted.
