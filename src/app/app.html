@@ -2,10 +2,12 @@
   <mat-icon class="brand-icon">rocket_launch</mat-icon>
   <span class="brand">Vibular</span>
   <span class="spacer"></span>
-  <a mat-button routerLink="/home" routerLinkActive="active-link">Home</a>
-  <a mat-button routerLink="/components" routerLinkActive="active-link">Components</a>
-  <a mat-button routerLink="/prompts" routerLinkActive="active-link">Prompts</a>
-  <a mat-button routerLink="/about" routerLinkActive="active-link">About</a>
+  <nav class="nav-links">
+    <a mat-button routerLink="/home" routerLinkActive="active-link">Home</a>
+    <a mat-button routerLink="/components" routerLinkActive="active-link">Components</a>
+    <a mat-button routerLink="/prompts" routerLinkActive="active-link">Prompts</a>
+    <a mat-button routerLink="/about" routerLinkActive="active-link">About</a>
+  </nav>
 
   <button
     mat-icon-button
@@ -15,6 +17,29 @@
   >
     <mat-icon>palette</mat-icon>
   </button>
+
+  <button
+    mat-icon-button
+    class="nav-toggle"
+    [matMenuTriggerFor]="navMenu"
+    aria-label="Open navigation menu"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #navMenu="matMenu">
+    <a mat-menu-item routerLink="/home" routerLinkActive="active-link">
+      <mat-icon>home</mat-icon><span>Home</span>
+    </a>
+    <a mat-menu-item routerLink="/components" routerLinkActive="active-link">
+      <mat-icon>widgets</mat-icon><span>Components</span>
+    </a>
+    <a mat-menu-item routerLink="/prompts" routerLinkActive="active-link">
+      <mat-icon>forum</mat-icon><span>Prompts</span>
+    </a>
+    <a mat-menu-item routerLink="/about" routerLinkActive="active-link">
+      <mat-icon>info</mat-icon><span>About</span>
+    </a>
+  </mat-menu>
   <mat-menu #themeMenu="matMenu">
     @for (t of themes; track t.id) {
       <button mat-menu-item (click)="setTheme(t.id)">

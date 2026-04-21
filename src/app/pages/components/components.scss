@@ -112,8 +112,15 @@ mat-divider {
   padding: 1rem;
 }
 
+.table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 .demo-table {
   width: 100%;
+  min-width: 480px;
   background: transparent;
 }
 

@@ -39,6 +39,24 @@
   flex: 1 1 auto;
 }
 
+.nav-links {
+  display: contents;
+}
+
+.nav-toggle {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  .nav-links {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+  }
+}
+
 .active-link {
   background: color-mix(in srgb, var(--mat-sys-on-primary) 20%, transparent);
   border-radius: 8px;

@@ -163,5 +163,41 @@ export class Prompts {
       text: 'can we update the prompts page to include all the prompts that were asked since the page was created?',
       outcome: 'Self-referential bookkeeping: added entries 17–24 so the timeline catches its own tail.',
     },
+    {
+      step: 25,
+      tag: 'polish',
+      text: 'let\'s update the readme file to better describe about how this project was built, and keep it sneaky and witty',
+      outcome: 'Rewrote <code>README.md</code> from the Angular CLI default into a Vibular intro — tagline, what\'s-in-the-box list, a "vibe coding, explained" section, project layout tree, and proper credits.',
+    },
+    {
+      step: 26,
+      tag: 'feature',
+      text: 'can we buy a vibular domain and host this site there?',
+      outcome: 'Compared registrars (Cloudflare / Namecheap / Porkbun) and hosts (Cloudflare Pages / GitHub Pages / Netlify / Vercel). Landed on GitHub Pages — free, already attached to the repo, and it plays nice with a custom domain later.',
+    },
+    {
+      step: 27,
+      tag: 'feature',
+      text: 'let\'s go with github pages option',
+      outcome: 'Added <code>.github/workflows/deploy.yml</code>: builds with <code>--base-href /vibular/</code>, copies <code>index.html</code> to <code>404.html</code> for SPA deep links, drops a <code>.nojekyll</code>, and publishes via <code>actions/deploy-pages</code>.',
+    },
+    {
+      step: 28,
+      tag: 'fix',
+      text: 'getting the following build error — Node.js 20 actions are deprecated...',
+      outcome: 'Bumped the workflow\'s runtime Node to 22 and set <code>FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true</code> so the JS actions themselves stop whining about the 2026 deprecation.',
+    },
+    {
+      step: 29,
+      tag: 'fix',
+      text: 'I see build failure as well — build Process completed with exit code 1',
+      outcome: 'Reproduced locally: <code>@angular/animations</code> was missing from dependencies, and Material\'s async-animations provider lazy-imports it — unresolvable at bundle time. Added the package, build went green.',
+    },
+    {
+      step: 30,
+      tag: 'feature',
+      text: 'let\'s update the prompts page to include all the prompts',
+      outcome: 'The snake eats its tail, again — entries 25–30 added.',
+    },
   ];
 }
