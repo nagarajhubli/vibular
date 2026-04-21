@@ -1,0 +1,63 @@
+:host {
+  display: block;
+}
+
+.hero {
+  background: linear-gradient(135deg, var(--mat-sys-primary-container), var(--mat-sys-tertiary-container));
+  color: var(--mat-sys-on-primary-container);
+  border-radius: 16px;
+  padding: 4rem 2rem;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  box-shadow: var(--mat-sys-level1);
+}
+
+.hero-content {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font: var(--mat-sys-display-small);
+  margin: 0 0 1rem;
+}
+
+.tagline {
+  font: var(--mat-sys-title-medium);
+  opacity: 0.85;
+  margin-bottom: 2rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+mat-card {
+  padding: 0.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--mat-sys-level3);
+  }
+}
+
+[mat-card-avatar] {
+  background: var(--mat-sys-primary);
+  color: var(--mat-sys-on-primary);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}

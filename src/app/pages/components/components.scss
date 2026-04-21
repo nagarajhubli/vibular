@@ -1,0 +1,130 @@
+:host {
+  display: block;
+}
+
+h1 {
+  font: var(--mat-sys-display-small);
+  margin: 0 0 0.5rem;
+}
+
+h2 {
+  font: var(--mat-sys-headline-small);
+  color: var(--mat-sys-primary);
+  margin: 0 0 1rem;
+}
+
+.intro {
+  font: var(--mat-sys-title-medium);
+  color: var(--mat-sys-on-surface-variant);
+  margin-bottom: 1.5rem;
+}
+
+section {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: var(--mat-sys-surface-container-low);
+  border-radius: 12px;
+  box-shadow: var(--mat-sys-level1);
+}
+
+mat-divider {
+  margin: 2rem 0;
+}
+
+.demo-row {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+
+  &.wrap {
+    align-items: flex-start;
+  }
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.grow {
+  flex: 1 1 300px;
+  min-width: 250px;
+}
+
+.spacer-sm {
+  height: 0.75rem;
+}
+
+.ripple-box {
+  position: relative;
+  overflow: hidden;
+  padding: 2rem;
+  border: 2px dashed var(--mat-sys-outline);
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.demo-card {
+  max-width: 400px;
+}
+
+.demo-avatar {
+  background: var(--mat-sys-primary);
+  border-radius: 50%;
+}
+
+.tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  border-radius: 4px;
+}
+
+.tile-1 { background: #5e72e4; }
+.tile-2 { background: #11cdef; }
+.tile-3 { background: #2dce89; }
+.tile-4 { background: #fb6340; }
+
+.demo-toolbar {
+  background: var(--mat-sys-primary);
+  color: var(--mat-sys-on-primary);
+  border-radius: 8px;
+}
+
+.sidenav-container {
+  height: 200px;
+  border: 1px solid var(--mat-sys-outline-variant);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.sidenav-container mat-sidenav {
+  width: 180px;
+}
+
+.sidenav-container mat-sidenav-content {
+  padding: 1rem;
+}
+
+.demo-table {
+  width: 100%;
+  background: transparent;
+}
+
+.demo-tree {
+  background: transparent;
+}
+
+.tree-invisible {
+  display: none;
+}
+
+.tree-children {
+  padding-left: 40px;
+}

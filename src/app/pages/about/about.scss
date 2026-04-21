@@ -1,0 +1,75 @@
+:host {
+  display: block;
+}
+
+h1 {
+  font: var(--mat-sys-display-small);
+  margin: 0 0 0.5rem;
+}
+
+h2 {
+  font: var(--mat-sys-headline-small);
+  margin: 0 0 1rem;
+  color: var(--mat-sys-primary);
+}
+
+.intro {
+  font: var(--mat-sys-title-medium);
+  color: var(--mat-sys-on-surface-variant);
+  margin-bottom: 2rem;
+}
+
+.name-story {
+  font: var(--mat-sys-body-large);
+  color: var(--mat-sys-on-surface);
+  max-width: 65ch;
+  line-height: 1.6;
+
+  strong {
+    color: var(--mat-sys-primary);
+    font-weight: 600;
+  }
+}
+
+mat-divider {
+  margin: 2rem 0;
+}
+
+section {
+  margin-bottom: 2rem;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+mat-card {
+  height: 100%;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--mat-sys-level2);
+  }
+}
+
+mat-card-content {
+  margin-top: 0.75rem;
+  font: var(--mat-sys-body-medium);
+  color: var(--mat-sys-on-surface-variant);
+}
+
+code {
+  background: var(--mat-sys-surface-container);
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: 0.9em;
+}
+
+mat-list-item {
+  height: auto !important;
+  padding: 0.5rem 0 !important;
+}

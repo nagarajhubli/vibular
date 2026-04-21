@@ -1,0 +1,109 @@
+<h1>About This Site</h1>
+  <p class="intro">
+    A love letter to Angular, written mostly in prompts. The code is real; the effort is
+    suspiciously low.
+  </p>
+
+  <mat-divider />
+
+  <section>
+    <h2>Why "Vibular"?</h2>
+    <p class="name-story">
+      Because <strong>Angular</strong> is a serious framework, and this is a decidedly
+      unserious rebrand of it. <strong>Vibe</strong> + <strong>Angular</strong> →
+      <strong>Vibular</strong>. It sounds almost anatomical, slightly made up, and
+      entirely on-brand for a site assembled by asking nicely instead of typing carefully.
+      If you squint, it's a framework. If you don't, it's still fine.
+    </p>
+  </section>
+
+  <mat-divider />
+
+  <section>
+    <h2>How It Was Created</h2>
+    <mat-list>
+      <mat-list-item>
+        <mat-icon matListItemIcon>terminal</mat-icon>
+        <span matListItemTitle>Scaffolded with Angular CLI</span>
+        <span matListItemLine>
+          <code>npx @angular/cli@latest new</code> — generated the project structure, routing, and SCSS support.
+        </span>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon matListItemIcon>palette</mat-icon>
+        <span matListItemTitle>Angular Material added via schematic</span>
+        <span matListItemLine>
+          <code>ng add @angular/material</code> — injected the Material 3 theme into <code>styles.scss</code> and <code>index.html</code>.
+        </span>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon matListItemIcon>pages</mat-icon>
+        <span matListItemTitle>Pages generated via CLI</span>
+        <span matListItemLine>
+          <code>ng generate component pages/home</code> and <code>ng generate component pages/about</code> — created the routed page components.
+        </span>
+      </mat-list-item>
+    </mat-list>
+  </section>
+
+  <mat-divider />
+
+  <section>
+    <h2>Frameworks & Libraries</h2>
+    <div class="cards">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Angular 21</mat-card-title>
+          <mat-card-subtitle>Frontend Framework</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          The framework that introduced us to dependency injection and never quite let us leave.
+          Standalone components, signals, new control flow — same old love.
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Angular Material 21</mat-card-title>
+          <mat-card-subtitle>UI Component Library</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          Google's design system, ported to Angular, now in its Material 3 era.
+          It has feelings (CSS variables) and boundaries (density tokens). Respect both.
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>TypeScript 5.9</mat-card-title>
+          <mat-card-subtitle>Language</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          JavaScript with adult supervision. Yells at you at compile time so the browser doesn't
+          have to at runtime. You'll thank it later.
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>SCSS</mat-card-title>
+          <mat-card-subtitle>Stylesheet Language</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          CSS, but it finally learned how to nest. Angular Material's theming lives here,
+          which is why <code>mat.theme()</code> feels like magic and mostly is.
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Vitest 4</mat-card-title>
+          <mat-card-subtitle>Testing Framework</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          Tests so fast you'll almost want to write them. Karma is in a nice retirement home now;
+          Vitest does the cardio.
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </section>

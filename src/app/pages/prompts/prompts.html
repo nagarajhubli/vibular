@@ -1,0 +1,27 @@
+<h1>Prompts</h1>
+<p class="intro">
+  Every prompt that shaped this site, in order. A peek behind the curtain at how a vibe-coded app
+  comes together one conversation turn at a time.
+</p>
+
+<ol class="timeline">
+  @for (entry of entries; track entry.step) {
+    <li class="entry">
+      <div class="marker">
+        <span class="step">{{ entry.step }}</span>
+      </div>
+      <mat-card class="card">
+        <mat-card-header>
+          <mat-chip class="tag" [attr.data-tag]="entry.tag">{{ entry.tag }}</mat-chip>
+        </mat-card-header>
+        <mat-card-content>
+          <blockquote class="prompt">“{{ entry.text }}”</blockquote>
+          <p class="outcome">
+            <mat-icon class="outcome-icon">auto_awesome</mat-icon>
+            <span [innerHTML]="entry.outcome"></span>
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </li>
+  }
+</ol>

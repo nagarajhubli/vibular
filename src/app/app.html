@@ -1,0 +1,39 @@
+<mat-toolbar class="app-toolbar">
+  <mat-icon class="brand-icon">rocket_launch</mat-icon>
+  <span class="brand">Vibular</span>
+  <span class="spacer"></span>
+  <a mat-button routerLink="/home" routerLinkActive="active-link">Home</a>
+  <a mat-button routerLink="/components" routerLinkActive="active-link">Components</a>
+  <a mat-button routerLink="/prompts" routerLinkActive="active-link">Prompts</a>
+  <a mat-button routerLink="/about" routerLinkActive="active-link">About</a>
+
+  <button
+    mat-icon-button
+    [matMenuTriggerFor]="themeMenu"
+    matTooltip="Change theme"
+    aria-label="Change theme"
+  >
+    <mat-icon>palette</mat-icon>
+  </button>
+  <mat-menu #themeMenu="matMenu">
+    @for (t of themes; track t.id) {
+      <button mat-menu-item (click)="setTheme(t.id)">
+        <span class="theme-swatch" [style.background]="t.swatch"></span>
+        <span>{{ t.label }}</span>
+        @if (theme() === t.id) {
+          <mat-icon class="theme-check">check</mat-icon>
+        }
+      </button>
+    }
+  </mat-menu>
+</mat-toolbar>
+
+<main class="app-content">
+  <router-outlet />
+</main>
+
+<footer class="app-footer">
+  <span>Vibe coded with</span>
+  <mat-icon class="heart" aria-label="love">favorite</mat-icon>
+  <span>by Nagaraj &amp; Claude</span>
+</footer>
