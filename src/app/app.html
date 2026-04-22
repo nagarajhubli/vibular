@@ -11,6 +11,15 @@
 
   <button
     mat-icon-button
+    (click)="cycleMode()"
+    [matTooltip]="'Mode: ' + modeLabel()"
+    aria-label="Toggle color mode"
+  >
+    <mat-icon>{{ modeIcon() }}</mat-icon>
+  </button>
+
+  <button
+    mat-icon-button
     [matMenuTriggerFor]="themeMenu"
     matTooltip="Change theme"
     aria-label="Change theme"

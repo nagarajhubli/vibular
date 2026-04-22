@@ -18,6 +18,48 @@
   </div>
 </section>
 
+<section class="vibe-cta">
+  <mat-card class="cta-card">
+    <mat-card-header>
+      <mat-icon mat-card-avatar>auto_awesome</mat-icon>
+      <mat-card-title>Prompt this site</mat-card-title>
+      <mat-card-subtitle>The seed prompt that started it all</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      Paste into <a href="https://claude.com/claude-code" target="_blank" rel="noopener">Claude Code</a>
+      and vibe-code your own Angular + Material starter. No framework wars. No tickets.
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-flat-button (click)="copySeed()">
+        <mat-icon>{{ copiedSeed() ? 'check' : 'content_copy' }}</mat-icon>
+        {{ copiedSeed() ? 'Copied' : 'Copy seed prompt' }}
+      </button>
+    </mat-card-actions>
+  </mat-card>
+
+  <mat-card class="cta-card">
+    <mat-card-header>
+      <mat-icon mat-card-avatar>call_split</mat-icon>
+      <mat-card-title>Remix it</mat-card-title>
+      <mat-card-subtitle>Fork Vibular, make it yours</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      Rename, repaint, repurpose. Copy the remix prompt and Claude will walk you through
+      cloning, renaming, and picking a fresh palette.
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <a mat-stroked-button href="https://github.com/nagarajhubli/vibular" target="_blank" rel="noopener">
+        <mat-icon>code</mat-icon>
+        View on GitHub
+      </a>
+      <button mat-flat-button (click)="copyRemix()">
+        <mat-icon>{{ copiedRemix() ? 'check' : 'content_copy' }}</mat-icon>
+        {{ copiedRemix() ? 'Copied' : 'Copy remix prompt' }}
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</section>
+
 <section class="features">
   <mat-card>
     <mat-card-header>

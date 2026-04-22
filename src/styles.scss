@@ -62,10 +62,8 @@ html.theme-mint {
 }
 
 body {
-  // Default the application to a light color theme. This can be changed to
-  // `dark` to enable the dark color theme, or to `light dark` to defer to the
-  // user's system settings.
-  color-scheme: light;
+  // Respect system preference by default; can be overridden by html.mode-light / html.mode-dark.
+  color-scheme: light dark;
 
   // Set a default background, font and text colors for the application using
   // Angular Material's system-level CSS variables. Learn more about these
@@ -78,6 +76,17 @@ body {
   margin: 0;
   height: 100%;
 }
+
+// Explicit overrides: clicking sun/moon pins the mode.
+html.mode-light,
+html.mode-light body {
+  color-scheme: light;
+}
+html.mode-dark,
+html.mode-dark body {
+  color-scheme: dark;
+}
+
 /* You can add global styles to this file, and also import other style files */
 
 // Route view transitions (browsers that support View Transitions API).
