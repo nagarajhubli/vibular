@@ -199,5 +199,65 @@ export class Prompts {
       text: 'let\'s update the prompts page to include all the prompts',
       outcome: 'The snake eats its tail, again — entries 25–30 added.',
     },
+    {
+      step: 31,
+      tag: 'fix',
+      text: 'can we make the menu in header responsive, as it is breaking in mobile screens, and also avoid showing horizontal scrollbar in pages, especially in mobile viewports',
+      outcome: 'Collapsed nav into a hamburger <code>mat-menu</code> under 720px, capped every page with <code>max-width: 100vw</code> + <code>overflow-x: hidden</code>, and wrapped the offending table demo in a scroll container so the outer page no longer panned.',
+    },
+    {
+      step: 32,
+      tag: 'review',
+      text: 'suggest some more ideas for this site',
+      outcome: 'Drafted 18 ideas across polish, content, DX and meta; grouped them into four phases so we could ship increments without choking on a single PR.',
+    },
+    {
+      step: 33,
+      tag: 'feature',
+      text: 'ok, let\'s start with phase 1',
+      outcome: 'Phase 1 polish: floating-rocket 404 page, per-demo copy-link with hover anchor, 1200×630 OG card generated via <code>sharp</code>, Angular view transitions between routes, and a PWA install banner that captures <code>beforeinstallprompt</code>.',
+    },
+    {
+      step: 34,
+      tag: 'feature',
+      text: 'let\'s start with phase 2',
+      outcome: 'Phase 2: system/light/dark mode toggle with <code>color-scheme</code> + CSS variable overrides, a single-handler keyboard shortcut service (g-chords, <code>?</code>, <code>t</code>, <code>m</code>, Ctrl/⌘+K), a <code>MatDialog</code> command palette with arrow-key nav, and a cheatsheet dialog wired to the same shortcut bus.',
+    },
+    {
+      step: 35,
+      tag: 'polish',
+      text: 'in the remix it card, add spacing between the 2 buttons',
+      outcome: 'Added <code>gap: 0.75rem</code> to the CTA card\'s <code>mat-card-actions</code> so the two buttons breathe instead of cuddling.',
+    },
+    {
+      step: 36,
+      tag: 'polish',
+      text: 'let\'s make the title and logo in toolbar link to home page',
+      outcome: 'Wrapped the rocket icon + Vibular wordmark in an <code>&lt;a routerLink="/home"&gt;</code> with an aria-label; kept the styling identical so it still looks like a logo, not a link.',
+    },
+    {
+      step: 37,
+      tag: 'feature',
+      text: 'let\'s start with phase 3 changes',
+      outcome: 'Phase 3: a build-time meta generator that parses <code>git log</code> + scans the repo, a <code>/stats</code> dashboard with per-extension breakdown, a <code>/changelog</code> page grouped by month, and a <code>/playground</code> that lets visitors build their own <code>mat.theme()</code> snippet live. Nav, command palette, shortcuts and cheatsheet all got the three new routes.',
+    },
+    {
+      step: 38,
+      tag: 'review',
+      text: 'review the entire project code and see if any refinements or performance improvements can be done',
+      outcome: 'Extracted a shared <code>slug()</code> utility (was duplicated across <code>DemoBlock</code> and the command palette), added a <code>safeStorage</code> wrapper for SSR/quota-safe <code>localStorage</code>, moved <code>provideNativeDateAdapter()</code> to the <code>/components</code> route (only the Datepicker demo needs it), and closed a chord-timer leak in <code>ShortcutsService</code>.',
+    },
+    {
+      step: 39,
+      tag: 'polish',
+      text: 'lets raise the budget',
+      outcome: 'Bumped the initial-bundle budget in <code>angular.json</code> from 500kB/1MB to 800kB/1.2MB so the Material toolbar + menu + dialog modules stop tripping the warning on every CI build. Real splits will happen when they need to.',
+    },
+    {
+      step: 40,
+      tag: 'feature',
+      text: 'can we update the prompts page to include all the prompts',
+      outcome: 'Self-reference, take three — entries 31–40 added.',
+    },
   ];
 }
