@@ -26,6 +26,23 @@
   }
 }
 
+.brand-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 8px;
+  padding: 0.25rem 0.5rem;
+  margin: 0 0.25rem 0 -0.25rem;
+  transition: background 0.15s ease-in-out;
+
+  &:hover,
+  &:focus-visible {
+    background: color-mix(in srgb, var(--mat-sys-on-primary) 12%, transparent);
+    outline: none;
+  }
+}
+
 .brand-icon {
   margin-right: 0.5rem;
 }
