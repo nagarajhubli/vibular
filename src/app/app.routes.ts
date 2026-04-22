@@ -12,5 +12,8 @@ export const routes: Routes = [
     path: 'components',
     loadComponent: () => import('./pages/components/components').then((m) => m.ComponentsPage),
   },
-  { path: '**', redirectTo: 'home' },
+  {
+    path: '**',
+    loadComponent: () => import('./pages/not-found/not-found').then((m) => m.NotFound),
+  },
 ];

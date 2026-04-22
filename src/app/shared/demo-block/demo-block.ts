@@ -15,9 +15,14 @@ hljs.registerLanguage('xml', xml);
   selector: 'app-demo-block',
   imports: [MatButtonModule, MatIconModule, MatTooltipModule],
   template: `
-    <div class="demo-block">
+    <div class="demo-block" [id]="anchor()">
       <header>
-        <h2>{{ title() }}</h2>
+        <h2>
+          <a class="anchor" [href]="'#' + anchor()" (click)="copyLink($event)">
+            {{ title() }}
+            <mat-icon class="anchor-icon">{{ linkCopied() ? 'check' : 'link' }}</mat-icon>
+          </a>
+        </h2>
         <div class="actions">
           <button
             mat-icon-button
@@ -72,6 +77,24 @@ hljs.registerLanguage('xml', xml);
         color: var(--mat-sys-primary);
         margin: 0;
       }
+      h2 .anchor {
+        color: inherit;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+      }
+      h2 .anchor-icon {
+        font-size: 1rem;
+        width: 1rem;
+        height: 1rem;
+        opacity: 0;
+        transition: opacity 0.15s ease-in-out;
+      }
+      h2 .anchor:hover .anchor-icon,
+      h2 .anchor:focus-visible .anchor-icon {
+        opacity: 0.7;
+      }
       .actions {
         display: flex;
         gap: 0.5rem;
@@ -106,6 +129,14 @@ export class DemoBlock {
   private sanitizer = inject(DomSanitizer);
   showCode = signal(false);
   copied = signal(false);
+  linkCopied = signal(false);
+
+  anchor = computed(() =>
+    this.title()
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, ''),
+  );
 
   highlighted = computed<SafeHtml>(() => {
     const src = this.code();
@@ -113,6 +144,20 @@ export class DemoBlock {
     const result = hljs.highlight(src, { language: lang, ignoreIllegals: true });
     return this.sanitizer.bypassSecurityTrustHtml(result.value);
   });
+
+  async copyLink(event: MouseEvent) {
+    event.preventDefault();
+    const url = `${location.origin}${location.pathname}#${this.anchor()}`;
+    history.replaceState(null, '', `#${this.anchor()}`);
+    try {
+      await navigator.clipboard.writeText(url);
+      this.linkCopied.set(true);
+      this.snackBar.open('Link copied to clipboard', '', { duration: 1800 });
+      setTimeout(() => this.linkCopied.set(false), 1800);
+    } catch {
+      this.snackBar.open('Copy failed', 'Dismiss', { duration: 2000 });
+    }
+  }
 
   async copyCode() {
     try {

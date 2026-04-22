@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { InstallBanner } from './shared/install-banner/install-banner';
 
 type ThemeId = 'azure' | 'rose' | 'mint';
 
@@ -27,6 +28,7 @@ const THEME_STORAGE_KEY = 'app-theme';
     MatIconModule,
     MatMenuModule,
     MatTooltipModule,
+    InstallBanner,
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss',
