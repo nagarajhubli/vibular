@@ -18,7 +18,10 @@ export class ShortcutsService {
   install(destroyRef: DestroyRef) {
     const handler = (e: KeyboardEvent) => this.onKey(e);
     window.addEventListener('keydown', handler);
-    destroyRef.onDestroy(() => window.removeEventListener('keydown', handler));
+    destroyRef.onDestroy(() => {
+      window.removeEventListener('keydown', handler);
+      this.clearChord();
+    });
   }
 
   private onKey(e: KeyboardEvent) {

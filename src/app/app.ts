@@ -11,6 +11,7 @@ import { InstallBanner } from './shared/install-banner/install-banner';
 import { ShortcutsService } from './shared/shortcuts/shortcuts.service';
 import { Cheatsheet } from './shared/shortcuts/cheatsheet';
 import { CommandPalette } from './shared/command-palette/command-palette';
+import { safeStorage } from './shared/utils/storage';
 
 type ThemeId = 'azure' | 'rose' | 'mint';
 export type ModeId = 'system' | 'light' | 'dark';
@@ -54,13 +55,9 @@ export class App {
     { id: 'mint', label: 'Mint Breeze', swatch: '#b5e8c9' },
   ];
 
-  theme = signal<ThemeId>(
-    (typeof localStorage !== 'undefined' && (localStorage.getItem(THEME_STORAGE_KEY) as ThemeId)) || 'azure',
-  );
+  theme = signal<ThemeId>((safeStorage.get(THEME_STORAGE_KEY) as ThemeId) || 'azure');
 
-  mode = signal<ModeId>(
-    (typeof localStorage !== 'undefined' && (localStorage.getItem(MODE_STORAGE_KEY) as ModeId)) || 'system',
-  );
+  mode = signal<ModeId>((safeStorage.get(MODE_STORAGE_KEY) as ModeId) || 'system');
 
   private shortcuts = inject(ShortcutsService);
   private dialog = inject(MatDialog);
@@ -88,7 +85,7 @@ export class App {
       const root = document.documentElement;
       root.classList.remove('theme-azure', 'theme-rose', 'theme-mint');
       root.classList.add(`theme-${t}`);
-      if (typeof localStorage !== 'undefined') localStorage.setItem(THEME_STORAGE_KEY, t);
+      safeStorage.set(THEME_STORAGE_KEY, t);
     });
 
     effect(() => {
@@ -96,7 +93,7 @@ export class App {
       const root = document.documentElement;
       root.classList.remove('mode-system', 'mode-light', 'mode-dark');
       root.classList.add(`mode-${m}`);
-      if (typeof localStorage !== 'undefined') localStorage.setItem(MODE_STORAGE_KEY, m);
+      safeStorage.set(MODE_STORAGE_KEY, m);
     });
   }
 

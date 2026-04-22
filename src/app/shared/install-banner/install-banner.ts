@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, HostListener, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { safeStorage } from '../utils/storage';
 
 interface BeforeInstallPromptEvent extends Event {
   prompt(): Promise<void>;
@@ -104,7 +105,7 @@ export class InstallBanner {
 
   @HostListener('window:beforeinstallprompt', ['$event'])
   onPrompt(event: Event) {
-    if (typeof localStorage !== 'undefined' && localStorage.getItem(DISMISS_KEY) === '1') return;
+    if (safeStorage.get(DISMISS_KEY) === '1') return;
     event.preventDefault();
     this.deferred = event as BeforeInstallPromptEvent;
     this.visible.set(true);
@@ -125,7 +126,7 @@ export class InstallBanner {
   }
 
   dismiss() {
-    if (typeof localStorage !== 'undefined') localStorage.setItem(DISMISS_KEY, '1');
+    safeStorage.set(DISMISS_KEY, '1');
     this.visible.set(false);
   }
 }

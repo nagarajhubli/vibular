@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { provideNativeDateAdapter } from '@angular/material/core';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -11,6 +12,7 @@ export const routes: Routes = [
   {
     path: 'components',
     loadComponent: () => import('./pages/components/components').then((m) => m.ComponentsPage),
+    providers: [provideNativeDateAdapter()],
   },
   {
     path: 'playground',

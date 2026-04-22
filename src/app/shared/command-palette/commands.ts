@@ -1,3 +1,5 @@
+import { slug } from '../utils/slug';
+
 export interface Command {
   id: string;
   label: string;
@@ -6,12 +8,6 @@ export interface Command {
   group: 'Pages' | 'Components';
   icon: string;
 }
-
-const slug = (s: string) =>
-  s
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-|-$/g, '');
 
 const demoTitles = [
   'Buttons',

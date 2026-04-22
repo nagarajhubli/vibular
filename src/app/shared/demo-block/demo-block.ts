@@ -7,6 +7,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import hljs from 'highlight.js/lib/core';
 import typescript from 'highlight.js/lib/languages/typescript';
 import xml from 'highlight.js/lib/languages/xml';
+import { slug } from '../utils/slug';
 
 hljs.registerLanguage('typescript', typescript);
 hljs.registerLanguage('xml', xml);
@@ -131,12 +132,7 @@ export class DemoBlock {
   copied = signal(false);
   linkCopied = signal(false);
 
-  anchor = computed(() =>
-    this.title()
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/^-|-$/g, ''),
-  );
+  anchor = computed(() => slug(this.title()));
 
   highlighted = computed<SafeHtml>(() => {
     const src = this.code();
