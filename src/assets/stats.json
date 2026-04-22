@@ -1,0 +1,17 @@
+{
+  "generatedAt": "2026-04-22T09:19:38.080Z",
+  "prompts": 30,
+  "commits": 9,
+  "contributors": 1,
+  "firstCommitDate": "2026-04-21T22:58:53+05:30",
+  "files": 39,
+  "lines": 3602,
+  "byExt": {
+    "yml": 55,
+    "md": 71,
+    "mjs": 173,
+    "ts": 1854,
+    "html": 706,
+    "scss": 743
+  }
+}

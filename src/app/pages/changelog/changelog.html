@@ -1,0 +1,38 @@
+<section class="changelog-head">
+  <h1>Changelog</h1>
+  <p class="intro">
+    Every commit that shipped Vibular, pulled straight from <code>git log</code>. No
+    release notes were written by hand.
+  </p>
+</section>
+
+@for (group of groups(); track group.key) {
+  <section class="month">
+    <h2>{{ group.label }}</h2>
+    <ol class="commits">
+      @for (c of group.commits; track c.hash) {
+        <li class="commit">
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>
+                <a [href]="commitUrl(c.short)" target="_blank" rel="noopener">
+                  {{ c.subject }}
+                </a>
+              </mat-card-title>
+              <mat-card-subtitle>
+                <code>{{ c.short }}</code>
+                · <time>{{ c.date | date: 'MMM d, y · h:mm a' }}</time>
+                · {{ c.author }}
+              </mat-card-subtitle>
+            </mat-card-header>
+            @if (c.body) {
+              <mat-card-content>
+                <pre>{{ c.body }}</pre>
+              </mat-card-content>
+            }
+          </mat-card>
+        </li>
+      }
+    </ol>
+  </section>
+}

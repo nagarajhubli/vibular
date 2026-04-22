@@ -47,6 +47,9 @@ export const COMMANDS: Command[] = [
   { id: 'components', label: 'Components', path: '/components', group: 'Pages', icon: 'widgets' },
   { id: 'prompts', label: 'Prompts', path: '/prompts', group: 'Pages', icon: 'forum' },
   { id: 'about', label: 'About', path: '/about', group: 'Pages', icon: 'info' },
+  { id: 'playground', label: 'Playground', path: '/playground', group: 'Pages', icon: 'tune' },
+  { id: 'stats', label: 'Stats', path: '/stats', group: 'Pages', icon: 'insights' },
+  { id: 'changelog', label: 'Changelog', path: '/changelog', group: 'Pages', icon: 'history' },
   ...demoTitles.map<Command>((t) => ({
     id: slug(t),
     label: t,

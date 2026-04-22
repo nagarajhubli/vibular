@@ -1,0 +1,96 @@
+<section class="playground-head">
+  <h1>Theme playground</h1>
+  <p class="intro">
+    Mix a color, pick a font, pinch the density. Grab the Sass snippet and paste it
+    straight into <code>styles.scss</code>.
+  </p>
+</section>
+
+<div class="playground-grid">
+  <aside class="controls">
+    <h2>Primary palette</h2>
+    <mat-chip-set aria-label="Primary palette">
+      @for (p of palettes; track p.id) {
+        <mat-chip-option
+          [selected]="primary() === p.id"
+          (click)="primary.set(p.id)"
+        >
+          <span class="swatch" [style.background]="p.swatch"></span>
+          {{ p.label }}
+        </mat-chip-option>
+      }
+    </mat-chip-set>
+
+    <h2>Tertiary palette</h2>
+    <mat-chip-set aria-label="Tertiary palette">
+      @for (t of tertiaries; track t.id) {
+        <mat-chip-option
+          [selected]="tertiary() === t.id"
+          (click)="tertiary.set(t.id)"
+        >
+          <span class="swatch" [style.background]="t.swatch"></span>
+          {{ t.label }}
+        </mat-chip-option>
+      }
+    </mat-chip-set>
+
+    <h2>Typography</h2>
+    <div class="font-row">
+      <mat-form-field>
+        <mat-label>Brand (headings)</mat-label>
+        <mat-select [value]="brandFont()" (valueChange)="brandFont.set($event)">
+          @for (f of fonts; track f) {
+            <mat-option [value]="f">{{ f }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Plain (body)</mat-label>
+        <mat-select [value]="plainFont()" (valueChange)="plainFont.set($event)">
+          @for (f of fonts; track f) {
+            <mat-option [value]="f">{{ f }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <h2>Density: <span class="density-value">{{ density() }}</span></h2>
+    <mat-slider min="-5" max="0" step="1" discrete>
+      <input matSliderThumb [value]="density()" (valueChange)="density.set($event)" />
+    </mat-slider>
+    <p class="density-hint">
+      0 is the default, -3 is Vibular's current flavor, -5 is espresso-compact.
+    </p>
+  </aside>
+
+  <section class="preview-col">
+    <div class="preview" [style]="previewStyle()">
+      <div class="preview-header">
+        <span class="preview-label">Live preview</span>
+        <span class="preview-hint">(colors update; fonts/density live in the snippet)</span>
+      </div>
+      <div class="preview-sample">
+        <h3>Palette in action</h3>
+        <p>
+          A quick mix of surfaces, primary, and tertiary — the exact tokens
+          <code>mat.theme()</code> generates when you paste the snippet.
+        </p>
+        <div class="swatches-row">
+          <div class="sw primary">primary</div>
+          <div class="sw tertiary">tertiary</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="snippet-wrap">
+      <div class="snippet-head">
+        <h2>Your theme</h2>
+        <button mat-flat-button (click)="copy()">
+          <mat-icon>{{ copied() ? 'check' : 'content_copy' }}</mat-icon>
+          {{ copied() ? 'Copied' : 'Copy snippet' }}
+        </button>
+      </div>
+      <pre class="snippet"><code>{{ snippet() }}</code></pre>
+    </div>
+  </section>
+</div>

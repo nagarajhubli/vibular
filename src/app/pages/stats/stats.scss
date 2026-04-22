@@ -1,0 +1,109 @@
+:host {
+  display: block;
+}
+
+.stats-head {
+  text-align: center;
+  margin-bottom: 2.5rem;
+
+  h1 {
+    font: var(--mat-sys-display-small);
+    margin: 0 0 0.5rem;
+  }
+
+  .intro {
+    font: var(--mat-sys-title-medium);
+    color: var(--mat-sys-on-surface-variant);
+    max-width: 56ch;
+    margin: 0 auto 0.75rem;
+  }
+
+  .generated {
+    font: var(--mat-sys-body-small);
+    color: var(--mat-sys-on-surface-variant);
+  }
+}
+
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.tile {
+  padding: 1.25rem;
+  text-align: center;
+  background: var(--mat-sys-surface-container-low);
+
+  mat-icon {
+    color: var(--mat-sys-primary);
+    font-size: 2rem;
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .value {
+    font: var(--mat-sys-display-small);
+    color: var(--mat-sys-primary);
+    margin: 0.5rem 0 0.25rem;
+  }
+
+  .label {
+    font: var(--mat-sys-title-medium);
+  }
+
+  .hint {
+    font: var(--mat-sys-body-small);
+    color: var(--mat-sys-on-surface-variant);
+    margin-top: 0.35rem;
+  }
+}
+
+.breakdown {
+  background: var(--mat-sys-surface-container-low);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--mat-sys-level1);
+
+  h2 {
+    font: var(--mat-sys-headline-small);
+    color: var(--mat-sys-primary);
+    margin: 0 0 1rem;
+  }
+}
+
+.bars {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.bar-row {
+  display: grid;
+  gap: 0.35rem;
+
+  .bar-label {
+    display: flex;
+    justify-content: space-between;
+    font: var(--mat-sys-body-medium);
+
+    .count {
+      color: var(--mat-sys-on-surface-variant);
+      font: var(--mat-sys-body-small);
+    }
+  }
+
+  .track {
+    background: var(--mat-sys-surface-container-high);
+    border-radius: 999px;
+    overflow: hidden;
+    height: 10px;
+  }
+
+  .fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--mat-sys-primary), var(--mat-sys-tertiary));
+    border-radius: 999px;
+    transition: width 0.6s ease;
+  }
+}

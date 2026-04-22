@@ -39,7 +39,15 @@ export class ShortcutsService {
     // Chord: g then h/c/p/a.
     if (this.chord === 'g') {
       this.clearChord();
-      const map: Record<string, string> = { h: '/home', c: '/components', p: '/prompts', a: '/about' };
+      const map: Record<string, string> = {
+        h: '/home',
+        c: '/components',
+        p: '/prompts',
+        a: '/about',
+        y: '/playground',
+        s: '/stats',
+        l: '/changelog',
+      };
       const path = map[key.toLowerCase()];
       if (path) {
         e.preventDefault();

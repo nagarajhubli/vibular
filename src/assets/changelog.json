@@ -1,0 +1,74 @@
+[
+  {
+    "hash": "b67a870aca878656f5ddbc245edf6f42f6f71068",
+    "short": "b67a870",
+    "date": "2026-04-22T14:46:24+05:30",
+    "author": "Nagaraj Hubli",
+    "subject": "Make toolbar brand link to /home",
+    "body": "Wrap the rocket icon and Vibular wordmark in an anchor with routerLink\nand a subtle hover/focus background so it reads as a clickable home\nlink, matching the behavior users expect from a site header.\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>"
+  },
+  {
+    "hash": "28d47ff5bb833a0cb7274ed786c92e1900ce0f3c",
+    "short": "28d47ff",
+    "date": "2026-04-22T14:44:26+05:30",
+    "author": "Nagaraj Hubli",
+    "subject": "Add spacing between buttons in Remix CTA card",
+    "body": "Material's default mat-card-actions layout puts buttons flush; add a\n0.75rem gap and allow wrapping so the two actions breathe on narrow\nviewports.\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>"
+  },
+  {
+    "hash": "7d3cd04eb5071c754fbfb3a0a3e7b2cac87b9ad3",
+    "short": "7d3cd04",
+    "date": "2026-04-22T14:35:06+05:30",
+    "author": "Nagaraj Hubli",
+    "subject": "Phase 2: dark mode, shortcuts, command palette, vibe CTAs",
+    "body": "- Dark mode cycle (system / light / dark) wired to html.mode-* classes;\n  body now declares `color-scheme: light dark` so Material 3 tokens\n  adapt to system preference by default, with explicit overrides\n  persisted to localStorage.\n- ShortcutsService: single keydown listener with chord support. g h/c/\n  p/a navigates, t cycles theme, m cycles mode, ? opens the cheatsheet,\n  / or Ctrl/Cmd+K opens the palette. Typing-in-input is ignored.\n- Cheatsheet dialog — grouped shortcut rows with <kbd> chips.\n- Command palette (Cmd+K) — fuzzy match over 4 pages + 26 demos, arrow\n  navigation + enter, routes to anchor on select.\n- Home: \"Prompt this site\" and \"Remix it\" cards with one-click copy\n  of seed and remix prompts (paste straight into Claude Code).\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>"
+  },
+  {
+    "hash": "3c177a9d07572aed2d9c9c9e2c1f4718b2196e5f",
+    "short": "3c177a9",
+    "date": "2026-04-22T13:54:31+05:30",
+    "author": "Nagaraj Hubli",
+    "subject": "Phase 1 polish: 404, deep links, OG card, transitions, install prompt",
+    "body": "- Custom 404 page with a floating rocket and two CTAs, wired via\n  loadComponent on the wildcard route.\n- Per-demo anchors: slugified id + click-to-copy link icon on each\n  title, plus router anchor/scroll restoration so deep links land\n  cleanly below the sticky toolbar.\n- Open Graph + Twitter meta and a 1200x630 social card generated via\n  a new scripts/generate-og.mjs (re-using the rocket SVG).\n- View Transitions API via withViewTransitions + a subtle fade-slide\n  keyframe pair, guarded by prefers-reduced-motion.\n- PWA install banner that listens for beforeinstallprompt, dismisses\n  to localStorage, and self-hides on appinstalled.\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>"
+  },
+  {
+    "hash": "b06335201aee323df4e0b9c8e4b659b9951455f5",
+    "short": "b063352",
+    "date": "2026-04-21T23:42:12+05:30",
+    "author": "Nagaraj Hubli",
+    "subject": "Make header and pages responsive",
+    "body": "Add a hamburger menu below 720px so the toolbar nav collapses cleanly\non mobile, clip body-level horizontal overflow globally, and wrap the\nMaterial table demo in a scrollable container so it pans horizontally\ninstead of pushing the page. Also extend the prompts timeline with\nentries 25-30 covering the README rewrite, GitHub Pages setup, and\nbuild fixes.\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>"
+  },
+  {
+    "hash": "856e06133c48c36f4b1f75f3e55d1a867a666d15",
+    "short": "856e061",
+    "date": "2026-04-21T23:25:39+05:30",
+    "author": "Nagaraj Hubli",
+    "subject": "Fix GitHub Pages build",
+    "body": "Add @angular/animations dependency — async-animations provider\nlazy-imports it and the production bundler can't resolve it otherwise.\nAlso opt the workflow into Node 24 for JS actions and bump the runtime\nNode to 22 to clear the deprecation warning.\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>"
+  },
+  {
+    "hash": "924487c31a3d9c289627d607d4bede6d0f334528",
+    "short": "924487c",
+    "date": "2026-04-21T23:12:07+05:30",
+    "author": "Nagaraj Hubli",
+    "subject": "Add GitHub Pages deploy workflow",
+    "body": "Build with --base-href /vibular/, copy index.html to 404.html for SPA\nfallback on deep links, and publish dist/angular-bootstrap/browser via\nactions/deploy-pages.\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>"
+  },
+  {
+    "hash": "dfd70d6985b15d368c3054d558c8d54f93564101",
+    "short": "dfd70d6",
+    "date": "2026-04-21T23:08:16+05:30",
+    "author": "Nagaraj Hubli",
+    "subject": "Rewrite README as a Vibular intro",
+    "body": "Replace the default Angular CLI README with a witty project-specific\none covering the theming, PWA, prompts page, and vibe-coding origin story.\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>"
+  },
+  {
+    "hash": "c020468f99c301140419b31d5aa419b038f5db21",
+    "short": "c020468",
+    "date": "2026-04-21T22:58:53+05:30",
+    "author": "Nagaraj Hubli",
+    "subject": "Initial commit: Vibular — an Angular 21 + Material 3 vibe-coded starter",
+    "body": "- Angular 21 standalone components with signals and lazy-loaded routes\n- Material Design 3 theming with 3 pastel themes (Azure, Rose, Mint)\n- Home, About, Components gallery, and Prompts timeline pages\n- Syntax-highlighted copy-ready snippets for every Material component\n- Lato body + Montserrat heading typography\n- PWA-ready with rocket-launch icons, manifest, and service worker\n- OnPush change detection across all components\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>"
+  }
+]

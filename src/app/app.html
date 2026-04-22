@@ -9,6 +9,21 @@
     <a mat-button routerLink="/components" routerLinkActive="active-link">Components</a>
     <a mat-button routerLink="/prompts" routerLinkActive="active-link">Prompts</a>
     <a mat-button routerLink="/about" routerLinkActive="active-link">About</a>
+    <button mat-button [matMenuTriggerFor]="moreMenu">
+      More
+      <mat-icon>arrow_drop_down</mat-icon>
+    </button>
+    <mat-menu #moreMenu="matMenu">
+      <a mat-menu-item routerLink="/playground" routerLinkActive="active-link">
+        <mat-icon>tune</mat-icon><span>Playground</span>
+      </a>
+      <a mat-menu-item routerLink="/stats" routerLinkActive="active-link">
+        <mat-icon>insights</mat-icon><span>Stats</span>
+      </a>
+      <a mat-menu-item routerLink="/changelog" routerLinkActive="active-link">
+        <mat-icon>history</mat-icon><span>Changelog</span>
+      </a>
+    </mat-menu>
   </nav>
 
   <button
@@ -49,6 +64,15 @@
     </a>
     <a mat-menu-item routerLink="/about" routerLinkActive="active-link">
       <mat-icon>info</mat-icon><span>About</span>
+    </a>
+    <a mat-menu-item routerLink="/playground" routerLinkActive="active-link">
+      <mat-icon>tune</mat-icon><span>Playground</span>
+    </a>
+    <a mat-menu-item routerLink="/stats" routerLinkActive="active-link">
+      <mat-icon>insights</mat-icon><span>Stats</span>
+    </a>
+    <a mat-menu-item routerLink="/changelog" routerLinkActive="active-link">
+      <mat-icon>history</mat-icon><span>Changelog</span>
     </a>
   </mat-menu>
   <mat-menu #themeMenu="matMenu">

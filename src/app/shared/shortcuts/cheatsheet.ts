@@ -95,6 +95,9 @@ export class Cheatsheet {
         { keys: ['g', 'c'], desc: 'Go to Components' },
         { keys: ['g', 'p'], desc: 'Go to Prompts' },
         { keys: ['g', 'a'], desc: 'Go to About' },
+        { keys: ['g', 'y'], desc: 'Go to Playground' },
+        { keys: ['g', 's'], desc: 'Go to Stats' },
+        { keys: ['g', 'l'], desc: 'Go to Changelog' },
       ],
     },
     {
