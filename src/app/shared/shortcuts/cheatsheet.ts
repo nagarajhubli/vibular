@@ -98,6 +98,7 @@ export class Cheatsheet {
         { keys: ['g', 'y'], desc: 'Go to Playground' },
         { keys: ['g', 's'], desc: 'Go to Stats' },
         { keys: ['g', 'l'], desc: 'Go to Changelog' },
+        { keys: ['g', 'g'], desc: 'Go to Games' },
       ],
     },
     {

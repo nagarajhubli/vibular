@@ -1,0 +1,132 @@
+@if (stage() === 'filter') {
+  <div class="filter-screen">
+    <div class="terminal-line">
+      <span class="accent">~/dev-crossword</span> $ choose your config
+    </div>
+
+    <section class="filter-section">
+      <div class="filter-label">// theme</div>
+      <div class="pills">
+        @for (t of themes; track t.id) {
+          <button
+            type="button"
+            class="pill"
+            [class.active]="theme() === t.id"
+            (click)="setTheme(t.id)"
+          >
+            {{ t.label }}
+          </button>
+        }
+      </div>
+    </section>
+
+    <section class="filter-section">
+      <div class="filter-label">// difficulty</div>
+      <div class="pills">
+        @for (d of difficulties; track d.id) {
+          <button
+            type="button"
+            class="pill"
+            [class.active]="diff() === d.id"
+            (click)="setDiff(d.id)"
+          >
+            {{ d.label }}
+          </button>
+        }
+      </div>
+    </section>
+
+    <button mat-flat-button color="primary" class="start-btn" (click)="startGame()">
+      ./run-puzzle.sh
+    </button>
+  </div>
+} @else {
+  <div class="game-screen">
+    <div class="game-header">
+      <div class="game-title">
+        <span class="accent">~/dev-crossword</span> $ solving...
+        <span class="badge">{{ theme() }}</span>
+        <span class="badge">{{ diff() }}</span>
+      </div>
+      <div class="timer">{{ timerText() }}</div>
+    </div>
+
+    <div class="active-clue-bar" [class.solved]="solved()">{{ activeClueText() }}</div>
+
+    <div class="game-body">
+      <div>
+        <div class="grid-wrap">
+          <div
+            class="crossword-grid"
+            [style.grid-template-columns]="'repeat(' + cols() + ', 36px)'"
+          >
+            @for (row of cells(); track $index; let r = $index) {
+              @for (cell of row; track $index; let c = $index) {
+                @if (cell.answer === '_') {
+                  <div class="cell black" aria-hidden="true"></div>
+                } @else {
+                  <button
+                    type="button"
+                    class="cell"
+                    [class.active]="isActiveCell(r, c)"
+                    [class.word-highlight]="isInActiveWord(r, c) && !isActiveCell(r, c)"
+                    [class.correct]="markFor(r, c) === 'correct'"
+                    [class.wrong]="markFor(r, c) === 'wrong'"
+                    (click)="onCellClick(r, c)"
+                  >
+                    @if (numMap()[r + ',' + c]; as num) {
+                      <span class="cell-num">{{ num }}</span>
+                    }
+                    <span class="cell-letter">{{ cell.letter }}</span>
+                  </button>
+                }
+              }
+            }
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button mat-stroked-button (click)="check()">Check</button>
+          <button mat-stroked-button (click)="revealWord()" [disabled]="!activeWord()">
+            Reveal word
+          </button>
+          <button mat-stroked-button (click)="revealAll()">Reveal all</button>
+          <button mat-stroked-button (click)="newPuzzle()">New puzzle</button>
+        </div>
+      </div>
+
+      <div class="clues-panel">
+        <div class="clue-group">
+          <h3>Across</h3>
+          <ul class="clue-list">
+            @for (w of acrossClues(); track wordKey(w)) {
+              <li
+                class="clue-item"
+                [class.active]="activeWord() === w"
+                [class.solved]="solvedWords().has(wordKey(w))"
+                (click)="selectWord(w)"
+              >
+                <span class="clue-num">{{ w.num }}.</span> {{ w.clue }}
+              </li>
+            }
+          </ul>
+        </div>
+        <div class="clue-group">
+          <h3>Down</h3>
+          <ul class="clue-list">
+            @for (w of downClues(); track wordKey(w)) {
+              <li
+                class="clue-item"
+                [class.active]="activeWord() === w"
+                [class.solved]="solvedWords().has(wordKey(w))"
+                (click)="selectWord(w)"
+              >
+                <span class="clue-num">{{ w.num }}.</span> {{ w.clue }}
+              </li>
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+}

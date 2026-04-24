@@ -1,4 +1,4 @@
-import { Injectable, inject, DestroyRef } from '@angular/core';
+import { Injectable, inject, DestroyRef, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -11,6 +11,9 @@ export class ShortcutsService {
   readonly openPalette$ = new Subject<void>();
   readonly cycleTheme$ = new Subject<void>();
   readonly cycleMode$ = new Subject<void>();
+
+  /** Pages that capture raw keyboard input (games, editors) flip this on. */
+  readonly suspended = signal(false);
 
   private chord: string | null = null;
   private chordTimer: ReturnType<typeof setTimeout> | null = null;
@@ -25,6 +28,7 @@ export class ShortcutsService {
   }
 
   private onKey(e: KeyboardEvent) {
+    if (this.suspended()) return;
     if (this.isTyping(e.target)) return;
     if (e.altKey) return;
 
@@ -50,6 +54,7 @@ export class ShortcutsService {
         y: '/playground',
         s: '/stats',
         l: '/changelog',
+        g: '/games',
       };
       const path = map[key.toLowerCase()];
       if (path) {

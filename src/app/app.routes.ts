@@ -27,6 +27,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/changelog/changelog').then((m) => m.Changelog),
   },
   {
+    path: 'games',
+    loadComponent: () => import('./pages/games/games').then((m) => m.Games),
+  },
+  {
     path: '**',
     loadComponent: () => import('./pages/not-found/not-found').then((m) => m.NotFound),
   },

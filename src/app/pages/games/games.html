@@ -1,0 +1,36 @@
+@if (stage() === 'menu') {
+  <section class="games-head">
+    <h1>Games</h1>
+    <p class="intro">
+      Light fare for when the components page has stopped vibing. All client-side, no
+      accounts, no scores to beat — just a keyboard and a grid.
+    </p>
+  </section>
+
+  <section class="tiles">
+    @for (tile of tiles; track tile.id) {
+      <mat-card class="tile" tabindex="0" (click)="open(tile.id)" (keydown.enter)="open(tile.id)">
+        <mat-icon class="tile-icon">{{ tile.icon }}</mat-icon>
+        <div class="title">{{ tile.title }}</div>
+        <div class="blurb">{{ tile.blurb }}</div>
+        <div class="tags">
+          @for (t of tile.tags; track t) {
+            <span class="tag">{{ t }}</span>
+          }
+        </div>
+        <button mat-flat-button color="primary" class="play" (click)="open(tile.id); $event.stopPropagation()">
+          Play
+          <mat-icon iconPositionEnd>arrow_forward</mat-icon>
+        </button>
+      </mat-card>
+    }
+  </section>
+} @else if (stage() === 'crossword') {
+  <section class="game-wrap">
+    <button mat-button class="back" (click)="backToMenu()">
+      <mat-icon>arrow_back</mat-icon>
+      All games
+    </button>
+    <app-crossword />
+  </section>
+}
